@@ -249,7 +249,7 @@ testing := 0
 Test()
 {
  testing++
- FormatTime, OutputVar, 20040228 LSys D1 D4
+
  LV_Add(testing, 1, 10, 5, 2,"18-08-2021")
 	
 }
@@ -272,7 +272,7 @@ ManualMessage()
 
 AutoCalling()
 {
-   LV_ModifyCol(1,"testing")
+   LV_ModifyCol(1,10)
     
     BlockInput On
     ; clicking on the number
