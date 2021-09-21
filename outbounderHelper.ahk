@@ -97,14 +97,14 @@ LeftMessageOne()
 	
 	MsgBox, 4,, Is this a dupe or account? (press Yes or No)
 	IfMsgBox Yes
-		holdSaveAndCLoseButton := 143, 731
+		click, 157, 821
 	else
-		holdSaveAndCLoseButton := 154, 822
+		click, 154, 736
 			
 	
 	;if there is a dupe or account, then we change the click location
 	;reason for the outcome of the call
-	click, holdSaveAndCLoseButton
+	;click, holdSaveAndCLoseButton
 	WideSalesLeaveMessageOne()
 	
 	
@@ -126,17 +126,49 @@ LeftMessageTwo()
 	
 	MsgBox, 4,, Is this a dupe or account? (press Yes or No)
 	IfMsgBox Yes
-		holdSaveAndCLoseButton := 143, 731
+		click, 157, 821
 	else
-		holdSaveAndCLoseButton := 154, 822
+		click, 154, 736
 			
-	
 	;if there is a dupe or account, then we change the click location
 	;reason for the outcome of the call
 	click, holdSaveAndCLoseButton
 	
 	;this closes the lead and leave a message on widesales
 	WideSalesLeaveMessageTwo()
+	
+
+	BlockInput Off
+    
+    
+
+}
+
+LeftMessageThree()
+{
+	BlockInput On
+	; move the mouse to the next window click on it and then leave message
+	click, 1999, 430
+	CoordMode,Mouse ,window
+	click, 65, 241
+	click, 204, 237
+	click, 216, 195
+	
+	;Click the hung up window
+	HandUpCall()
+	
+	MsgBox, 4,, Is this a dupe or account? (press Yes or No)
+	IfMsgBox Yes
+		click, 157, 821
+	else
+		click, 154, 736
+			
+	;if there is a dupe or account, then we change the click location
+	;reason for the outcome of the call
+	click, holdSaveAndCLoseButton
+	
+	;this closes the lead and leave a message on widesales
+	WideSalesLeaveMessageThree()
 	
 
 	BlockInput Off
@@ -207,7 +239,7 @@ return
 
 
 LeftMessageThree:
-MsgBox, Left Voice Message Setting Callback and Sending Email
+LeftMessageThree()
 return 
 
 ;testing auto call
