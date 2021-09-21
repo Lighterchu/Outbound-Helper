@@ -1,0 +1,10 @@
+-------New functions----
+* ask the user if there is  a dupe or account attached to the lead
+* Autocalling 
+
+
+---------Fix----------
+leave message and one us the new function 
+
+
+---Remove----
