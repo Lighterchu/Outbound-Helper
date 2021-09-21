@@ -1,0 +1,3 @@
+-------New functions----
+*able to leave message and write the outcome 
+* leave message 2 and one, it will decide if it needs to send a text or not 

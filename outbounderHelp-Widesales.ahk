@@ -5,40 +5,37 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #Include outbounderHelp-WideSales.ahk
 
-WideSalesLogic(leaveMessageType)
+
+WideSalesLeaveMessageOne()
 {
-	switch leaveMessageType
-	{
-	case 1:
-		MsgBox, You entered "%UserInput%", which is the maximum length of text.
-		return
-	case 2:
-		MsgBox, You entered "%UserInput%" at which time the input timed out.
-		return
-	case 3:
-		return
-	default:
-		MsgBox, That is not a message type
-	}
+
+	sleep,30
+	click, 881, 702 
+	send,{L down}
+	sleep,30
+	click, 965, 456 
+	;;To turn off the send text
+	click, 888, 729
 	
-	
-    if(matchingLeads = 1) 
-    {
-        MsgBox, this is a Matching Lead
-    }else
-    {
-        MsgBox, This is a normal Lead
-    }
-	
+	;close the lead
+	click, 1130, 822
+
+
 }
 
-CheckingIfMatchingLead(isMatching)
+WideSalesLeaveMessageTwo()
 {
-	 if(matchingLeads = 1) 
-    {
-        MsgBox, this is a Matching Lead
-    }else
-    {
-        MsgBox, This is a normal Lead
-    }
+
+	sleep,30
+	click, 881, 702 
+	send,{L down}
+	sleep,30
+	click, 965, 456 
+	;;To turn off the send text
+	click, 888, 729
+	
+	;close the lead
+	click, 1130, 822
+
+
 }

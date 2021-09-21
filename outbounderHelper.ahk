@@ -4,7 +4,7 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 CoordMode,Mouse ,screen
-
+#Include outbounderHelp-WideSales.ahk
 
 
 
@@ -49,6 +49,7 @@ nbnSales := 0
 AutoCall := 0
 global matchingLeads 
 devmode := 1
+holdSaveAndCLoseButton := 154, 822
 
 
 ;#----------------------------------------------
@@ -71,63 +72,6 @@ ManualLeavingMessage()
     
 }
 
-WideSalesLogicMessageOne()
-{
-
-	
-
-	;reason for the outcome of the call
-	click, 143, 731
-	sleep,30
-	click, 881, 702 
-	send,{L down}
-	sleep,30
-	click, 965, 456 
-	;;To turn off the send text
-	click, 888, 729
-	
-	;close the lead
-	click, 1130, 822
-	
-
-}
-
-WideSalesLogic()
-{
-    
-	
-    if(matchingLeads = 1) 
-    {
-        MsgBox, this is a Matching Lead
-    }else
-    {
-        MsgBox, This is a normal Lead
-    }
-	
-	
-
-}
-
-
-WideSalesLogicMessageTwo()
-{
-
-	
-
-	;reason for the outcome of the call
-	click, 143, 731
-	sleep,30
-	click, 881, 702 
-	send,{L down}
-	sleep,30
-	click, 965, 456 
-	
-	
-	;close the lead
-	click, 1109, 872
-	
-
-}
 
 HandUpCall()
 {
@@ -139,9 +83,6 @@ HandUpCall()
 LeftMessageOne()
 {
 	
-	
-   matchingLeads =: 0
-   
 	BlockInput On
 	;clicks on the MicroSIP and leaves a voice mails 
 	; move the mouse to the next window click on it and then leave message
@@ -154,63 +95,24 @@ LeftMessageOne()
 	;Click the hung up window
 	HandUpCall()
 	
-	  ;Ask the user if there is a dupe, if yes manaul leave message
-     MsgBox, 4, , is there a dupe and account ?, 5  ; 5-second timeout.
-     IfMsgBox, yes
-	 ;matchingLeads =: 1
-	 ;WideSalesLogic() 
-     Return  
-     
-     
+	MsgBox, 4,, Is this a dupe or account? (press Yes or No)
+	IfMsgBox Yes
+		holdSaveAndCLoseButton := 143, 731
+	else
+		holdSaveAndCLoseButton := 154, 822
+			
 	
-	
-	;CLose the lead 
-	;save and close is in a differ location, we have to change the click
-	;click, 1130, 822
-	WideSalesLogicMessageOne()
-	
+	;if there is a dupe or account, then we change the click location
+	;reason for the outcome of the call
+	click, holdSaveAndCLoseButton
+	WideSalesLeaveMessageOne()
 	
 	
 	BlockInput Off
 }
-
-LeftMessageOneMatchLead()
-{
-
-	
-	 BlockInput On
-	; move the mouse to the next window click on it and then leave message
-	
-	click, 1999, 430
-	CoordMode,Mouse ,window
-	click, 65, 241
-	click, 204, 237
-	click, 216, 195
-	
-	;Click the hung up window
-	HandUpCall()
-	
-	
-	
-  
-    ;change over to widesales 2.0 and close reason 
-	;Working progress not reaaady yet
-	 click, 168, 818
-	
-	;CLose the lead 
-	click, 1138, 882
-	
-	
-	BlockInput Off
-	
-}
-
-
 
 LeftMessageTwo()
 {
-	matchLead =: 0
-	
 	BlockInput On
 	; move the mouse to the next window click on it and then leave message
 	click, 1999, 430
@@ -222,23 +124,21 @@ LeftMessageTwo()
 	;Click the hung up window
 	HandUpCall()
 	
-    ;Ask the user if there is a dupe, if yes manaul leave message
-    
-    ;if user does not click anything means it will guess the there is No
-    ; dupe or account 
-     MsgBox, 4, , is there a dupe and account ?, 5  ; 5-second timeout.
-     IfMsgBox yes 
-	 ;matchingLeads =: 1
-	 ;WideSalesLogic() 
-	 Return
-    
+	MsgBox, 4,, Is this a dupe or account? (press Yes or No)
+	IfMsgBox Yes
+		holdSaveAndCLoseButton := 143, 731
+	else
+		holdSaveAndCLoseButton := 154, 822
+			
 	
-	WideSalesLogicMessageTwo()
+	;if there is a dupe or account, then we change the click location
+	;reason for the outcome of the call
+	click, holdSaveAndCLoseButton
+	
+	;this closes the lead and leave a message on widesales
+	WideSalesLeaveMessageTwo()
 	
 
-	
-	
-	
 	BlockInput Off
     
     
@@ -290,51 +190,8 @@ AutoCalling()
 }
 
 
-;Needs more work, not ready yet for auto calling
-AutoCallingLogic()
-{
-    sleep, 35000
-     BlockInput On
-	; move the mouse to the next window click on it and then leave message
-	click, 1999, 430
-	CoordMode,Mouse ,window
-	click, 65, 241
-	click, 204, 237
-	click, 216, 195
-	
-	;Click the hung up window
-	HandUpCall()
-	
-    ;Ask the user if there is a dupe, if yes manaul leave message
-    
-    ;if user does not click anything means it will guess the there is No
-    ; dupe or account 
-     MsgBox, 4, , is there a dupe and account ?, 5  ; 5-second timeout.
-     IfMsgBox, yes
-     Return
-    
-	
-	;change over to widesales 2.0 and close reason 
-	click, 143, 731
-	sleep,50
-	click, 881, 702 
-	send,{L down}
-	sleep,50
-	click, 965, 456 
-	
-	;CLose the lead 
-	click, 1122, 880
-	
-	
-	
-	BlockInput Off
-}
 
 
-WinGetActiveTitle() {
-	WinGetActiveTitle, v
-	Return, v
-}
 
 ;#--------------------------------------------------------
 
@@ -365,11 +222,6 @@ if WinExist("MicroSIP")
 }
 return 
 
-
-
-
-
-;%
 
 
 :*:]c::  	
