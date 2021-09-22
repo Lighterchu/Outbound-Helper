@@ -44,12 +44,11 @@ WideSalesLeaveMessageThree()
 	BlockInput On
 	sleep,19
 	click, 881, 702 
-	
-	MsgBox, 4,, is date right to send a email? (press Yes or No)
-	IfMsgBox Yes
-		send,{L down}
-		sleep,10
-		click, 965, 456 
+	send,{L down}
+	sleep,30
+	click, 965, 456 
+		MsgBox, 4,, is date right to send a email? (press Yes or No)
+		IfMsgBox Yes
 		
 		;close the lead
 		click, 1130, 822
