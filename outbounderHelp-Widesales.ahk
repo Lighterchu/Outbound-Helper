@@ -20,6 +20,10 @@ WideSalesLeaveMessageOne()
 	
 	;close the lead
 	click, 1130, 822
+	
+	;once done with the lead it will open a new lead
+	sleep, 2500
+	WideSalesOpenNewLead()
 	BlockInput off
 
 }
@@ -35,6 +39,11 @@ WideSalesLeaveMessageTwo()
 	
 	;close the lead
 	click, 1131, 876
+	
+	;once done with the lead it will open a new lead
+	sleep, 2500
+	WideSalesOpenNewLead()
+	
 	BlockInput off
 	
 }
@@ -57,7 +66,11 @@ WideSalesLeaveMessageThree()
 		sleep, 20
 		;close the lead
 		click, 1133, 810
-	
+		
+		;once done with the lead it will open a new lead
+		sleep, 2500
+		WideSalesOpenNewLead()
+		
 		return
 	
 	;sending manaul email and setting it back for 6 months
@@ -66,3 +79,9 @@ WideSalesLeaveMessageThree()
 	
 }
 
+WideSalesOpenNewLead()
+{
+
+	click, 1485, 190
+
+}
