@@ -163,9 +163,7 @@ LeftMessageThree()
 	else
 		click, 154, 736
 			
-	;if there is a dupe or account, then we change the click location
-	;reason for the outcome of the call
-	click, holdSaveAndCLoseButton
+	
 	
 	;this closes the lead and leave a message on widesales
 	WideSalesLeaveMessageThree()

@@ -27,10 +27,10 @@ WideSalesLeaveMessageOne()
 WideSalesLeaveMessageTwo()
 {
 	BlockInput On
-	sleep,10
+	sleep,20
 	click, 881, 702 
 	send,{L down}
-	sleep,10
+	sleep,20
 	click, 965, 456 
 	
 	;close the lead
@@ -50,8 +50,13 @@ WideSalesLeaveMessageThree()
 		MsgBox, 4,, is date right to send a email? (press Yes or No)
 		IfMsgBox Yes
 		
+		;need to have this here for the reason the mouse does move
+		BlockInput On
+		;turn off send sms 
+		click, 887, 725
+		sleep, 20
 		;close the lead
-		click, 1130, 822
+		click, 1133, 810
 	
 		return
 	
