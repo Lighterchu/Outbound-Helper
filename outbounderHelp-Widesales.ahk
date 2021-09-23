@@ -6,6 +6,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ;this holds all the widesales Logic and then used into the main outboundHelper
 
+delayToOpenLead := 2400
+
 
 WideSalesLeaveMessageOne()
 {
@@ -22,7 +24,7 @@ WideSalesLeaveMessageOne()
 	click, 1130, 822
 	
 	;once done with the lead it will open a new lead
-	sleep, 2500
+	sleep, delayToOpenLead
 	WideSalesOpenNewLead()
 	BlockInput off
 
@@ -41,7 +43,7 @@ WideSalesLeaveMessageTwo()
 	click, 1131, 876
 	
 	;once done with the lead it will open a new lead
-	sleep, 2500
+	sleep, delayToOpenLead
 	WideSalesOpenNewLead()
 	
 	BlockInput off
@@ -68,7 +70,7 @@ WideSalesLeaveMessageThree()
 		click, 1133, 810
 		
 		;once done with the lead it will open a new lead
-		sleep, 2500
+		sleep, delayToOpenLead
 		WideSalesOpenNewLead()
 		
 		return
