@@ -48,6 +48,7 @@ calls := 0
 nbnSales := 0
 AutoCall := 0
 global matchingLeads 
+global moveMouseSpeed := 500
 devmode := 1
 holdSaveAndCLoseButton := 154, 822
 
@@ -105,7 +106,8 @@ LeftMessageOne()
 	;if there is a dupe or account, then we change the click location
 	;reason for the outcome of the call
 	;click, holdSaveAndCLoseButton
-	WideSalesLeaveMessageOne()
+	;add parma into how quick the mouse move 1000 is 1 second
+	WideSalesLeaveMessageOne(100,100)
 	
 	
 	BlockInput Off
@@ -130,12 +132,10 @@ LeftMessageTwo()
 	else
 		click, 154, 736
 			
-	;if there is a dupe or account, then we change the click location
-	;reason for the outcome of the call
-	click, holdSaveAndCLoseButton
+	
 	
 	;this closes the lead and leave a message on widesales
-	WideSalesLeaveMessageTwo()
+	WideSalesLeaveMessageTwo(100,100)
 	
 
 	BlockInput Off
@@ -166,7 +166,7 @@ LeftMessageThree()
 	
 	
 	;this closes the lead and leave a message on widesales
-	WideSalesLeaveMessageThree()
+	WideSalesLeaveMessageThree(100,100)
 	
 
 	BlockInput Off

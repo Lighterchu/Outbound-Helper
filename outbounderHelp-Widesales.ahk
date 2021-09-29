@@ -6,16 +6,17 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ;this holds all the widesales Logic and then used into the main outboundHelper
 
-delayToOpenLead := 2400
 
 
-WideSalesLeaveMessageOne()
+;add parma actionOfMovingTheMouse How quick to move the mouse 
+;add parma delayToOpenLead How quick to open a new lead
+WideSalesLeaveMessageOne(actionOfMovingTheMouse,delayToOpenLead)
 {
 	BlockInput On
-	sleep,10
+	sleep,%actionOfMovingTheMouse%
 	click, 881, 702 
 	send,{L down}
-	sleep,10
+	sleep,%actionOfMovingTheMouse%
 	click, 965, 456 
 	;;To turn off the send text
 	click, 888, 729
@@ -29,14 +30,15 @@ WideSalesLeaveMessageOne()
 	BlockInput off
 
 }
-
-WideSalesLeaveMessageTwo()
+;add parma actionOfMovingTheMouse How quick to move the mouse 
+;add parma delayToOpenLead How quick to open a new lead
+WideSalesLeaveMessageTwo(actionOfMovingTheMouse,delayToOpenLead)
 {
 	BlockInput On
-	sleep,20
+	sleep,%actionOfMovingTheMouse%
 	click, 881, 702 
 	send,{L down}
-	sleep,20
+	sleep,%actionOfMovingTheMouse%
 	click, 965, 456 
 	
 	;close the lead
@@ -49,14 +51,15 @@ WideSalesLeaveMessageTwo()
 	BlockInput off
 	
 }
-
-WideSalesLeaveMessageThree()
+;add parma actionOfMovingTheMouse How quick to move the mouse 
+;add parma delayToOpenLead How quick to open a new lead
+WideSalesLeaveMessageThree(actionOfMovingTheMouse,delayToOpenLead)
 {
 	BlockInput On
-	sleep,19
+	sleep,%actionOfMovingTheMouse%
 	click, 881, 702 
 	send,{L down}
-	sleep,30
+	sleep,%actionOfMovingTheMouse%
 	click, 965, 456 
 		MsgBox, 4,, is date right to send a email? (press Yes or No)
 		IfMsgBox Yes
@@ -65,7 +68,7 @@ WideSalesLeaveMessageThree()
 		BlockInput On
 		;turn off send sms 
 		click, 887, 725
-		sleep, 20
+		sleep,%actionOfMovingTheMouse%
 		;close the lead
 		click, 1133, 810
 		
