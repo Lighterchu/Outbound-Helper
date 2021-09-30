@@ -38,6 +38,39 @@ Gui, Add, Button, Default x145 y80 w100 h30 gTest ,Test Button
 Gui, Add, ListView, x0 r20 w700 , Calls | Sales | Moblie sales | Fetch | Date Of Sales
 
 
+;----------------------Relo-------Gui---------------------
+ Gui,  Add, Text,cRed section xm w130, Customer Name:
+ Gui, Add, Edit, cRed vCustName w200 ys
+ Gui, Add, Text,cRed section xm w150, Is there a Connection Date or Tech Appointment required?
+ Gui, Add, Radio, cRed vCD1 checked, Connection Date
+ Gui, Add, Radio, cRed vCD2, Tech Appointment
+ Gui, Add, Radio, cRed vCD3, Tech Appointment or Arrival of NBN Device
+ Gui, Add, Text,cRed section xm w100, Connection Date:
+ Gui, Add, Edit,cRed vConnectionDate  w200 ys
+ Gui, Add, Text,cRed section xm w130, How are we closing the old service?
+ Gui, Add, Radio, cRed  vCL1 checked, Set date
+ Gui, Add, Radio, cRed vCL2, 1-5 days after the service goes live
+ Gui, Add, Radio, cRed vCL3, Customer to call at their descretion
+ Gui, Add, Text,cRed section xm w130, Closure Date (If applicable):
+ Gui, Add, Edit,cRed vClosureDate  w200 ys
+ Gui, Add, Text,cRed section xm w130, Old Billing Address Address:
+ Gui, Add, Edit,cRed vOldPost w200 ys
+ Gui, Add, Text,cRed section xm w130, New Billing Address Address:
+ Gui, Add, Edit,cRed vNewPost w200 ys
+ Gui, Add, Text,cRed section xm w130, New Mobile Number:
+ Gui, Add, Edit,cRed vMobile w200 ys
+ Gui, Add, Edit,cRed vEmail w200 ys
+ Gui, Add, Text,cRed section xm w130, Are there any services additional being relocated?
+ Gui, Add, Radio, cRed  ys vReloServ1, Yes
+ Gui, Add, Radio, cRed  ys vReloServ2 Checked, No
+ Gui, Add, Text,cRed section xm w130, Service 1:
+ Gui, Add, DDL,cRed vServiceType1 w200 ys, VoIP|Mobile|Fetch TV|
+ Gui, Add, Text,cRed section xm w130, Service 2:
+ Gui, Add, Edit,cRed vServiceType2  w200 ys,
+ Gui, Add, Text,cRed section xm w130, Service 3:
+ Gui, Add, Edit,cRed vServiceType3  w200 ys,
+ Gui, Add, Button, w150 xm section, Submit
+ Gui, Add, Button, w150 ys, Close
 
 
 Gui, Show, w400 h190, OutBounder Helper,Gui
