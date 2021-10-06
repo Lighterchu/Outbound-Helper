@@ -29,7 +29,7 @@ Gui, Add, Button, Default x280 y30 w100 h30 gLeftMessageThree,Leave Voice Messag
 
 Gui, Add, Button, Default x10 y80 w100 h30 gManualLeavingMessage,Manual Leave message
 Gui, Add, Button, Default x280 y80 w100 h30 gAutoCall, AutoCall
-Gui, Add, Button, Default x145 y80 w100 h30 gTest ,Test Button
+Gui, Add, Button, Default x145 y80 w100 h30 gShowRelo , Relo
 
 
 ;Gui, Add, Text,cRed , Use the first Line when there are no cms account or dupe leads
@@ -39,38 +39,38 @@ Gui, Add, ListView, x0 r20 w700 , Calls | Sales | Moblie sales | Fetch | Date Of
 
 
 ;----------------------Relo-------Gui---------------------
- Gui,  Add, Text,cRed section xm w130, Customer Name:
- Gui, Add, Edit, cRed vCustName w200 ys
- Gui, Add, Text,cRed section xm w150, Is there a Connection Date or Tech Appointment required?
- Gui, Add, Radio, cRed vCD1 checked, Connection Date
- Gui, Add, Radio, cRed vCD2, Tech Appointment
- Gui, Add, Radio, cRed vCD3, Tech Appointment or Arrival of NBN Device
- Gui, Add, Text,cRed section xm w100, Connection Date:
- Gui, Add, Edit,cRed vConnectionDate  w200 ys
- Gui, Add, Text,cRed section xm w130, How are we closing the old service?
- Gui, Add, Radio, cRed  vCL1 checked, Set date
- Gui, Add, Radio, cRed vCL2, 1-5 days after the service goes live
- Gui, Add, Radio, cRed vCL3, Customer to call at their descretion
- Gui, Add, Text,cRed section xm w130, Closure Date (If applicable):
- Gui, Add, Edit,cRed vClosureDate  w200 ys
- Gui, Add, Text,cRed section xm w130, Old Billing Address Address:
- Gui, Add, Edit,cRed vOldPost w200 ys
- Gui, Add, Text,cRed section xm w130, New Billing Address Address:
- Gui, Add, Edit,cRed vNewPost w200 ys
- Gui, Add, Text,cRed section xm w130, New Mobile Number:
- Gui, Add, Edit,cRed vMobile w200 ys
- Gui, Add, Edit,cRed vEmail w200 ys
- Gui, Add, Text,cRed section xm w130, Are there any services additional being relocated?
- Gui, Add, Radio, cRed  ys vReloServ1, Yes
- Gui, Add, Radio, cRed  ys vReloServ2 Checked, No
- Gui, Add, Text,cRed section xm w130, Service 1:
- Gui, Add, DDL,cRed vServiceType1 w200 ys, VoIP|Mobile|Fetch TV|
- Gui, Add, Text,cRed section xm w130, Service 2:
- Gui, Add, Edit,cRed vServiceType2  w200 ys,
- Gui, Add, Text,cRed section xm w130, Service 3:
- Gui, Add, Edit,cRed vServiceType3  w200 ys,
- Gui, Add, Button, w150 xm section, Submit
- Gui, Add, Button, w150 ys, Close
+ Gui, reloz:Add, Text,cRed section xm w130, Customer Name:
+ Gui, reloz:Add, Edit, cRed vCustName w200 ys
+ Gui, reloz:Add, Text,cRed section xm w150, Is there a Connection Date or Tech Appointment required?
+ Gui, reloz:Add, Radio, cRed vCD1 checked, Connection Date
+ Gui, reloz:Add, Radio, cRed vCD2, Tech Appointment
+ Gui, reloz:Add, Radio, cRed vCD3, Tech Appointment or Arrival of NBN Device
+ Gui, reloz:Add, Text,cRed section xm w100, Connection Date:
+ Gui, reloz:Add, Edit,cRed vConnectionDate  w200 ys
+ Gui, reloz:Add, Text,cRed section xm w130, How are we closing the old service?
+ Gui, reloz:Add, Radio, cRed  vCL1 checked, Set date
+ Gui, reloz:Add, Radio, cRed vCL2, 1-5 days after the service goes live
+ Gui, reloz:Add, Radio, cRed vCL3, Customer to call at their descretion
+ Gui, reloz:Add, Text,cRed section xm w130, Closure Date (If applicable):
+ Gui, reloz:Add, Edit,cRed vClosureDate  w200 ys
+ Gui, reloz:Add, Text,cRed section xm w130, Old Billing Address Address:
+ Gui, reloz:Add, Edit,cRed vOldPost w200 ys
+ Gui, reloz:Add, Text,cRed section xm w130, New Billing Address Address:
+ Gui, reloz:Add, Edit,cRed vNewPost w200 ys
+ Gui, reloz:Add, Text,cRed section xm w130, New Mobile Number:
+ Gui, reloz:Add, Edit,cRed vMobile w200 ys
+ Gui, reloz:Add, Edit,cRed vEmail w200 ys
+ Gui, reloz:Add, Text,cRed section xm w130, Are there any services additional being relocated?
+ Gui, reloz:Add, Radio, cRed  ys vReloServ1, Yes
+ Gui, reloz:Add, Radio, cRed  ys vReloServ2 Checked, No
+ Gui, reloz:Add, Text,cRed section xm w130, Service 1:
+ Gui, reloz:Add, DDL,cRed vServiceType1 w200 ys, VoIP|Mobile|Fetch TV|
+ Gui, reloz:Add, Text,cRed section xm w130, Service 2:
+ Gui, reloz:Add, Edit,cRed vServiceType2  w200 ys,
+ Gui, reloz:Add, Text,cRed section xm w130, Service 3:
+ Gui, reloz:Add, Edit,cRed vServiceType3  w200 ys,
+ Gui, reloz:Add, Button, w150 xm section gRelozButtonSubmit, Submit
+ Gui, reloz:Add, Button, w150 ys gRelozButtonClose, Close
 
 
 Gui, Show, w400 h190, OutBounder Helper,Gui
@@ -208,14 +208,7 @@ LeftMessageThree()
 
 }
 
-testing := 0
-Test()
-{
- testing++
 
- LV_Add(testing, 1, 10, 5, 2,"18-08-2021")
-	
-}
 
 ManualMessage()
 {
@@ -272,6 +265,69 @@ return
 LeftMessageThree:
 LeftMessageThree()
 return 
+
+RelozButtonClose:
+{
+     MsgBox, 4, , Do you want to close dialogue? (Press YES or NO)
+     IfMsgBox No
+         return
+     Gui, Cancel
+     Exit
+}
+
+ RelozButtonSubmit:
+{
+	if WinExist("ahk_exe notepad++.exe")
+		 WinActivate
+	 Gui, Submit  ; Save the input from the user to each control's associated variable
+		 If(CD3==1){
+	SendInput Dear %CustName%,{enter 2}Thank you for your time today.{enter}As discussed with you on the phone, we have arranged the relocation of your service from your old address at %OldPost% to your new address of %NewPost%.{enter}Your new service will be connected soon after the tech appointment OR 1-5 days from the date of the NBN box arriving.
+	 
+	 }
+	 
+	 If(CD2==1){
+	 SendInput Dear %CustName%,{enter 2}Thank you for your time today.{enter}As discussed with you on the phone, we have arranged the relocation of your service from your old address at %OldPost% to your new address of %NewPost%.{enter}Your new service will be connected soon after the tech appointment.
+	 
+	 }
+	 
+	 If(CD1==1){
+	 SendInput Dear %CustName%,{enter 2}Thank you for your time today.{enter}As discussed with you on the phone, we have arranged the relocation of your service from your old address at %OldPost% to your new address of %NewPost%.{enter}Your new service will be connected 1-5 days from the date of %ConnectionDate%.{enter 2}
+	 
+	 }
+	 
+	 If(CL1==1){
+	 SendInput I have arranged the closure of your previous service for %ClosureDate%.{enter2}
+	 
+	 } 
+	 
+	 If(CL3==1){
+	 SendInput You will need to call us back to arrange closure of your old service when you are ready for it to close off.{enter 2}
+	 
+	 }
+	 
+	 If(CL2==1){
+	 SendInput We will close off your old service up to 5 days after your new service goes live.{enter 2}
+	 
+	 }
+	 
+	 If(ReloServ1==1){
+	 SendInput I have also arranged for the address of your %ServiceType1%, %ServiceType2% and %ServiceType3% service to be updated to your new address.{enter 2}
+	 
+	 }
+	 
+	 SendInput {enter 2}If you have any further questions, please feel free to contact us on 1300 880 905, or simply reply to this email.{enter 2}Thank you again.{enter 2}%NewPost%
+	 
+	 Gui, Cancel
+		 Exit
+ }
+
+ShowRelo:
+{
+ Gui, reloz:Show,w600 h540, Relocation, Gui 1
+ return
+
+}
+
 
 ;testing auto call
 AutoCall:
